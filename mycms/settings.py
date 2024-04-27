@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ["127.0.0.1", "https://restfulcms-production.up.railway.app"]
+ALLOWED_HOSTS = ["127.0.0.1", "restfulcms-production.up.railway.app"]
 CSRF_TRUSTED_ORIGINS = ["https://restfulcms-production.up.railway.app"]
 
 CORS_ALLOWED_ORIGINS = [
