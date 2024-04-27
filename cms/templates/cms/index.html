@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+  <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+{% block title %}My CMS{% endblock %}
+
+{% block content %}
+    <div>
+        <h3>Welcome to RESTful|CMS, your free content management system.</h3>
+        <p>Retrieve all your published posts by accessing url/api/your_username.</p>
+    </div>
+    <div class="posts-list">
+        <div class="main-title-div">
+            <h2>Your Blog</h2>
+            <a class="button-primary" href="create/">Create</a>
+        </div>
+{% if all_posts %}
+
+    {% for post in all_posts %}
+        <a class="post-tile" href="{% url 'detail' post.id %}">
+            <p class="text-sm">{{ post.status.capitalize }}</p>
+            <p class="post-date text-sm">{{ post.pub_date }}</p>
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.body|slice:":50" }} ...</p>
+        </a>
+    {% endfor %}
+    </div>
+{% else %}
+    <p>No posts available.</p>
+{% endif %} 
+{% endblock %}
+

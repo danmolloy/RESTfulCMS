@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/styles.css' %}">
+  </head>
+<body class="body">
+    <!-- Add your common header, navigation, etc. here -->
+    <div class="header inconsolata-text">
+      <a href="/">
+        <h2>RESTful|CMS</h2>
+      </a>
+      <div>
+        {% if user.is_authenticated%}
+<div class="account-info">
+    <p>{{user.username}}</p>
+    <form action="{% url 'logout' %}?next=/" method="post">
+      {% csrf_token %}
+      <button type="submit" class="button-primary">Log out</button>
+  </form>
+</div>
+{% endif %}
+      </div>
+    </div>
+    <div class="main">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div class="footer"></div>
+    <!-- Add your common footer here -->
+</body>
+</html>

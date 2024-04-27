@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}My CMS{% endblock %}
+
+{% block content %}
+<div  class="main-title-div">
+
+  <h1>{{ blogpost.title }}</h1>
+  <div class="detail-btns-div">
+    <a class="button-primary" href="/update/{{ blogpost.id }}">Edit</a>
+    <form  action="/delete/{{ blogpost.id }}/" method="post">
+    {% csrf_token %}
+    <input class="button-secondary delete-btn" type="submit" value="Delete">
+  </form>
+  </div>
+</div>
+<div class="detail-body">
+<p class="blogpost-date">{{ blogpost.pub_date }}</p>
+<p>{{ blogpost.body }}</p>
+</div>
+
+{% endblock %}
