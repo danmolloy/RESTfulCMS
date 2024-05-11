@@ -17,7 +17,7 @@ class SignUpTemplateTests(TestCase):
     self.assertContains(response, '<h2>Sign Up</h2>')
     self.assertContains(response, '<form method="post">')
     self.assertContains(response, '<button type="submit" class="button-primary">Sign Up</button>')
-    self.assertContains(response, "<h2>myCMS</h2>")
+    self.assertContains(response, "<h2>RESTful|CMS</h2>")
 
 class BaseTemplateTests(TestCase):
   def setUp(self):
@@ -26,13 +26,13 @@ class BaseTemplateTests(TestCase):
   def test_base_template_not_logged_in(self):
     response = self.client.get('/signup/')
     self.assertEqual(response.status_code, 200)
-    self.assertContains(response, '<h2>myCMS</h2>')
+    self.assertContains(response, '<h2>RESTful|CMS</h2>')
   
   def test_base_template_logged_in(self):
     self.client.login(username='testuser', password='secretpassword')
     response = self.client.get('/')
     self.assertEqual(response.status_code, 200)
-    self.assertContains(response, '<h2>myCMS</h2>')
+    self.assertContains(response, '<h2>RESTful|CMS</h2>')
     self.assertContains(response, '<p>testuser</p>')
     self.assertContains(response, "Log out")
 
